@@ -1,0 +1,10 @@
+flask
+flask-cors
+flask-sqlalchemy
+pdfplumber
+python-docx
+scikit-learn
+sentence-transformers
+torch
+transformers
+werkzeug
