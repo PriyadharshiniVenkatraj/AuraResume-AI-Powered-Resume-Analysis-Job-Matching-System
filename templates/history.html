@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block title %}History - Smart Resume AI{% endblock %}
+
+{% block content %}
+<div class="timeline-header">
+    <h1 class="hero-title">Analysis <span class="highlight">History</span></h1>
+    <p class="hero-subtitle">Review previously analyzed candidates and their match scores.</p>
+</div>
+
+<div class="glass-panel">
+    <div class="table-responsive">
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Candidate Name</th>
+                    <th>Contact Info</th>
+                    <th>Match Score</th>
+                    <th>Matched Skills</th>
+                </tr>
+            </thead>
+            <tbody id="history-body">
+                <tr><td colspan="4" style="text-align: center; padding: 2rem;">Loading history...</td></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

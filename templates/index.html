@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="hero-section">
+    <h1 class="hero-title">Intelligent <span class="highlight">Resume Analysis</span></h1>
+    <p class="hero-subtitle">Upload a resume and a job description to instantly match candidates to roles using advanced ML capabilities.</p>
+</div>
+
+<div class="glass-panel main-analyzer">
+    <form id="analyze-form" enctype="multipart/form-data">
+        <div class="form-grid">
+            <div class="input-group">
+                <label for="resume">Candidate Resume (.pdf, .docx)</label>
+                <div class="file-upload">
+                    <input type="file" id="resume" name="resume" accept=".pdf,.docx" required>
+                    <div class="file-dummy">
+                        <span class="default-text">Click to browse or drag file here</span>
+                        <span class="success-text" id="file-name-display">File selected!</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="job_description">Job Description</label>
+                <textarea id="job_description" name="job_description" placeholder="Paste the job requirements and description here..." required></textarea>
+            </div>
+        </div>
+
+        <button type="submit" class="primary-btn" id="analyze-btn">
+            <span class="btn-text">Analyze Candidate</span>
+            <div class="spinner hidden" id="spinner"></div>
+        </button>
+    </form>
+</div>
+
+<!-- Results Section (Hidden by default) -->
+<div id="results-container" class="hidden">
+    <div class="results-header">
+        <h2>Analysis Results</h2>
+    </div>
+    
+    <div class="results-grid">
+        <!-- Match Score -->
+        <div class="glass-panel stat-card">
+            <div class="stat-title">Match Score</div>
+            <div class="stat-value highlight" id="res-score">0%</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="res-progress"></div>
+            </div>
+        </div>
+
+        <!-- Candidate Info -->
+        <div class="glass-panel info-card">
+            <div class="stat-title">Extracted Details</div>
+            <div class="info-list">
+                <div class="info-item"><strong>Name:</strong> <span id="res-name"></span></div>
+                <div class="info-item"><strong>Email:</strong> <span id="res-email"></span></div>
+                <div class="info-item"><strong>Phone:</strong> <span id="res-phone"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="skills-grid">
+        <div class="glass-panel">
+            <h3>Matched Skills</h3>
+            <div class="tag-container" id="res-matched"></div>
+        </div>
+        <div class="glass-panel">
+            <h3>Missing Skills</h3>
+            <div class="tag-container" id="res-missing"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}
